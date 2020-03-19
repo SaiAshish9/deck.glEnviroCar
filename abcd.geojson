@@ -102,7 +102,7 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "LineString",
+        "type": "Point",
         "coordinates": [
           6.484647742341846,
           51.22555184174763
