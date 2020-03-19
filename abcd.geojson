@@ -6,11 +6,11 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "Point",
-        "coordinates": [
+        "type": "LineString",
+        "coordinates":[ [
           6.4847174678758375,
           51.22546715521443
-        ]
+        ]]
       },
       "properties": {
         "id": "579634f9e4b086b281bf935e",
