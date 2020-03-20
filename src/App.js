@@ -18,7 +18,9 @@
   class App extends React.Component  {
 
 state={
-  data:[]
+  data:[],
+  X:'',
+  Y:''
 }
 
 
@@ -27,11 +29,14 @@ componentDidMount(){
   fetch('https://envirocar.org/api/stable/measurements')
   .then(data=>data.json())
   .then(d=>{
+
+var messages=d.features.map(x=>x['properties']['phenomenons']['GPS Speed']['value'])    
+
 d=d.features.map(x=>x['geometry']['coordinates'])
 
-d.forEach(x=>{
+d.forEach((x,k)=>{
 var i=Math.floor(Math.random() *3)  
-x.push(i)}
+x.push(i,messages[k])}
 )
 
 console.log(d)
@@ -49,8 +54,10 @@ render(){
       data:this.state.data,
       radiusScale: 12,
       radiusMinPixels: 3,
+      pickable: true,
       getPosition: d => [d[0], d[1], 0],
-      getColor: d => (d[2] === 1 ? MALE_COLOR : FEMALE_COLOR)
+      getColor: d => (d[2] === 1 ? MALE_COLOR : FEMALE_COLOR),
+      onHover:d=>this.setState({...this.state,X:d.x, Y:d.y})
     })
 ]
 
@@ -88,6 +95,17 @@ deck.gl React Based Visualization Of Envirocar Measurements Api Data
           layers={layers}
         >
           <StaticMap mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN} mapStyle={'mapbox://styles/mapbox/light-v9'} />
+    {
+      this.state.X?(
+<div style={{display:'flex',alignItems:'center',justifyContent:'center',background:'white',border:'1px solid black',textAlign:'center',fontWeight:'bold',height:'5vh',width:'8%',position:'absolute',zIndex:1, left:this.state.X, top:this.state.Y}}>
+  <h6 style={{fontWeight:'bold',margin:'auto'}}>
+  {this.state.X} km/h
+  </h6>
+</div>
+      ):null
+    }
+    
+    
         </DeckGL>
 
 <div className="bg-dark" style={{color:'white',textAlign:'center',fontWeight:'bold',position:'absolute',zIndex:1,bottom:0,width:'100%',minHeight:'6vh',display:'flex',justifyContent:'center',alignItems:'center'}}>
