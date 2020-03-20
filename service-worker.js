@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/deck.glEnviroCar/precache-manifest.2fae1e04110a4d1adeaf005b318f218b.js"
+  "/deck.glEnviroCar/precache-manifest.dad6214dbff8d08a73e626964b0e9f52.js"
 );
 
 self.addEventListener('message', (event) => {
