@@ -8,7 +8,7 @@ import * as d3 from "d3";
 
 import {withRouter} from 'react-router-dom'
   
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1Ijoic2FpYXNoaXNoIiwiYSI6ImNrMWdyNTc4cjA3dzEzb2sxaTlrdzFiOHoifQ.B1JQ-8A43BNcL-0kMxO9Bg';
+const MAPBOX_ACCESS_TOKEN = '';
 
 const MALE_COLOR = [0, 128, 255];
 const FEMALE_COLOR = [255, 0, 128];
